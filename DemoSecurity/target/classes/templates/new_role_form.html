@@ -1,0 +1,38 @@
+<!--Bismillahi Rahmani Raheem-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+	
+<head>
+	<title>Create New Role</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="p2 ">
+	  <a class="h2" th:href="@{/all/users}">List Users</a>
+	  <a class="h2" th:href="@{/all/role}">List Roles</a>
+  </div>
+  
+<div class="container-fluid text-center">  
+	<h1 th:if="${role.id == null}">Create New Role</h1>
+	<h1 th:Unless="${role.id == null}">Edit Role</h1>
+	<div>
+	  <form th:action="@{/save/role}" th:object="${role}" th:method="post" required style="max-width: 600px; margin: o auto;">
+		  <input type="hidden" th:field="*{id}" th:value="${role.id}"/>
+		  <div class="m-3">
+		  <div class="form-group row" p-1>
+			  <label for="name" class="col-form-label col-sm-4">Role Name:</label>
+			  <div class="col-sm-8">
+			  <input type="text" th:field="*{roleName}" id="roleName" th:value="roleName" th:name="roleName" class="form-control" placeholder="Enter Role Name" required/>
+			  </div>
+		  </div>
+		  <div class="text-center p-3">
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		  </div>
+		  </div>
+	  </form>
+	 
+  </div>
+  </div>
+</body>
+</html>
